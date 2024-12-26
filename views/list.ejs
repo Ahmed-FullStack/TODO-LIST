@@ -1,0 +1,23 @@
+<%- include('partials/header') -%> 
+
+<section class="form">
+
+<h1 class="form-title"><%= listTitle %> </h1>
+<div class="check">
+<% Items.forEach(item => { %>
+
+    <form class="flex" action="/delete" method="post">
+            <input class="c" type="checkbox" name="checkbox" value=<%= item._id %>  onChange="this.form.submit()">
+            <h3 class="flex-form"><%= item.name %> </h3>
+            <input type="hidden" name="deleteTitle" value=<%= listTitle %>>
+    </form>
+<% }); %> 
+</div>
+<form class="add-items" action="/" method="post">
+    <input  class="items" name="input" type="text" placeholder="Add Items" required>
+    <button class="btn-of" name="titleOfList" value=<%= listTitle %>  type="submit">+</button>
+</form>
+
+</section>
+
+<%- include('partials/footer') -%> 
